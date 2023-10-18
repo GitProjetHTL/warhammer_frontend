@@ -1,0 +1,41 @@
+.presentation{
+    padding: 1rem;
+    color: white;
+    height: 90vh;
+    
+}
+
+.content_presentation{
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem 2rem 3rem 2rem;
+    width: 30vw;
+    text-align: center;
+    margin: 4rem auto;
+}
+
+.more{
+    text-decoration: none;
+    color: white; 
+    border: 1px solid black;
+    margin: 1rem ;
+    padding: 1rem 2rem;
+    width: 10vw;
+    transition: all 1.5s;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.more:hover{
+    background-color:white;
+    color: black;
+
+}
+
+.input{
+    padding: 1rem;
+}
+
+.form_sign_in{
+    display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }

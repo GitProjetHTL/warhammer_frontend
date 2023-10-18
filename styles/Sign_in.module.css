@@ -1,0 +1,20 @@
+.presentation{
+    padding: 1rem;
+    color: white;
+    height: 90vh;
+    
+}
+
+.content_presentation{
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem 2rem 3rem 2rem;
+    width: 30vw;
+    text-align: center;
+    margin: 4rem auto;
+}
+
+.form_sign_in{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
