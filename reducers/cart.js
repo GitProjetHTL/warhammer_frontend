@@ -25,9 +25,9 @@ export const cartSlice = createSlice({
       console.log("item push",state)
     },
     removeFromCart: (state, action) => {
-      console.log(initialState)
-      console.log("tata",state.cartItems);
-      console.log("titi",action);
+      // console.log(initialState)
+      // console.log("tata",state.cartItems);
+      // console.log("titi",action);
       //verifier si le id récupérer correspond a une ID du tableau
       const itemSelected=state.cartItems.find(item=> item.id == action.payload.id);
       //si ID existe et que ca quantité est supp a 1 alors

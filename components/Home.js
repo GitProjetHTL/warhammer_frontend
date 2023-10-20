@@ -4,6 +4,8 @@ import { FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCartShopping} from '@fortawesome/fontawesome-svg-core'
+import { useDispatch } from 'react-redux';
+
 
 import Figurine from './Figurine';
 import PaintAndMod from './PaintAndMod';
@@ -11,15 +13,76 @@ import Wargame from './Wargame'
 import Submit  from './Submit'
 import Sign_up from './Sign_up'
 import Cart from './Cart'
+import allProduct from '../reducers/allProduct';
 function Home() {
   
-  
-
+   const dispatch = useDispatch();
+   const [newProduct,setNewProduct]=useState("")
 
   const [Navigation,setNavigation]=useState("");
   const user= useSelector((state) => state.user.value)
 
   console.log(user)
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/figure`)
+    .then(response => response.json())
+    .then(data=>{
+      console.log(data)
+      
+     const figure = data.data.map(item => ({
+        id:item._id,
+        name: item.name,
+        img: item.img,
+        price: item.price,
+        description: item.description,
+        type:item.type,
+        quantite:0,
+       })
+      );
+      console.log(figure)
+      //crée un réducer de database<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      dispatch(allProduct(figure));
+    })
+
+      fetch("http://localhost:3000/wargame")
+      .then(response => response.json())
+      .then(data=>{
+        // console.log(data)
+        
+       const codex = data.data.map(item => ({
+        id:item._id,
+        name: item.name,
+        img: item.img,
+        price: item.price,
+        description: item.description,
+        type:item.type,
+        quantite:0,
+         })
+        );
+         dispatch(allProduct(codex));
+
+
+      })
+      fetch("http://localhost:3000/paint")
+      .then(response => response.json())
+      .then(data=>{
+        // console.log(data)
+        
+       const paint = data.data.map(item => ({
+        id:item._id,
+        name: item.name,
+        img: item.img,
+        price: item.price,
+        description: item.description,
+        type:item.type,
+        quantite:0,
+         })
+        );
+        dispatch(allProduct(paint));
+      })
+    
+}, [newProduct])
 
   
   

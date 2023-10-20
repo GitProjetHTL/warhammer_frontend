@@ -1,12 +1,13 @@
 import styles from '../styles/Figurine.module.css'
 import {useState , useEffect} from 'react';
 import WargameContent from './WargameContent';
+import { useDispatch } from 'react-redux';
 
 function Figurine() {
 
    const [Figure,setFigure]=useState([]);
    const [Type,setType]=useState("")
-
+   const dispatch = useDispatch();
   useEffect(() => {
     fetch(`http://localhost:3000/figure/${Type}`)
     .then(response => response.json())
@@ -24,7 +25,7 @@ function Figurine() {
        })
       );
       //crée un réducer de database<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+      
       setFigure(figure);
     })
   }, [Type])

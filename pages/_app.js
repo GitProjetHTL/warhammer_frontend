@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import user from '../reducers/user'; //importe ici le reduceur et on appel avec son meme nom
 import cart from '../reducers/cart'; 
+import allProduct from '../reducers/allProduct'; 
 
 const store = configureStore({
  reducer: 
- {user,cart
+ {user,cart,allProduct
 },//ajouter ici le reduceur
 });
             
