@@ -13,7 +13,8 @@ import Wargame from './Wargame'
 import Submit  from './Submit'
 import Sign_up from './Sign_up'
 import Cart from './Cart'
-import allProduct from '../reducers/allProduct';
+import {addProduct} from '../reducers/allProduct';
+
 function Home() {
   
    const dispatch = useDispatch();
@@ -27,62 +28,64 @@ function Home() {
   useEffect(() => {
     fetch(`http://localhost:3000/figure`)
     .then(response => response.json())
-    .then(data=>{
-      console.log(data)
-      
-     const figure = data.data.map(item => ({
-        id:item._id,
+    .then(data => {
+      console.log()
+      const figure = data.data.map(item => ({
+        id: item._id,
         name: item.name,
         img: item.img,
         price: item.price,
         description: item.description,
-        type:item.type,
-        quantite:0,
-       })
-      );
-      console.log(figure)
-      //crée un réducer de database<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-      dispatch(allProduct(figure));
-    })
+        type: item.type,
+        quantite: 0,
+      }));
 
-      fetch("http://localhost:3000/wargame")
-      .then(response => response.json())
-      .then(data=>{
-        // console.log(data)
+      // Dispatch each product individually
+      figure.forEach(product => {
+        dispatch(addProduct(product));
+      });
+    });
+  }, [newProduct])
+      // fetch("http://localhost:3000/wargame")
+      // .then(response => response.json())
+      // .then(data=>{
+      //   // console.log(data)
         
-       const codex = data.data.map(item => ({
-        id:item._id,
-        name: item.name,
-        img: item.img,
-        price: item.price,
-        description: item.description,
-        type:item.type,
-        quantite:0,
-         })
-        );
-         dispatch(allProduct(codex));
+      //  const codex = data.data.map(item => ({
+      //   id:item._id,
+      //   name: item.name,
+      //   img: item.img,
+      //   price: item.price,
+      //   description: item.description,
+      //   quantite:0,
+      //    })
+      //   );
+      //   codex.forEach(codex=> {
+      //     dispatch(addProduct(codex));
+      //   });
 
 
-      })
-      fetch("http://localhost:3000/paint")
-      .then(response => response.json())
-      .then(data=>{
-        // console.log(data)
+      // })
+      // fetch("http://localhost:3000/paint")
+      // .then(response => response.json())
+      // .then(data=>{
+      //   // console.log(data)
         
-       const paint = data.data.map(item => ({
-        id:item._id,
-        name: item.name,
-        img: item.img,
-        price: item.price,
-        description: item.description,
-        type:item.type,
-        quantite:0,
-         })
-        );
-        dispatch(allProduct(paint));
-      })
+      //  const paint = data.data.map(item => ({
+      //   id:item._id,
+      //   name: item.name,
+      //   img: item.img,
+      //   price: item.price,
+      //   description: item.description,
+      //   quantite:0,
+      //    })
+      //   );
+      //   paint.forEach(paint => {
+      //     dispatch(addProduct(paint));
+      //   });
+      // })
     
-}, [newProduct])
+
 
   
   

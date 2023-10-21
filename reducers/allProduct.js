@@ -10,8 +10,8 @@ export const allProductSlice = createSlice({
     name: 'allProduct',//nom de l'etat
     initialState,//recuperer initialstate
     reducers: {//rentrer un fonction attendu
-    allProduct: (state, action) => {//state affiche la valeur actuell et action.payload stock la valeur de l'action  
-      state.value.push(action.payload)
+    addProduct: (state, action) => {//state affiche la valeur actuell et action.payload stock la valeur de l'action  
+      state.value.push(action.payload);
       console.log("ajouter")
     },
 
@@ -19,5 +19,5 @@ export const allProductSlice = createSlice({
  },
 });
 
-export const { allProduct } = allProductSlice.actions; // on recupère le nom la fonction dnas le reduseur  et initie avec le nom du reduceur
+export const { addProduct } = allProductSlice.actions; // on recupère le nom la fonction dnas le reduseur  et initie avec le nom du reduceur
 export default allProductSlice.reducer;//exporte ici le réduceur
