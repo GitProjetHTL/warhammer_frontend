@@ -12,6 +12,7 @@ export const allProductSlice = createSlice({
     reducers: {//rentrer un fonction attendu
     addProduct: (state, action) => {//state affiche la valeur actuell et action.payload stock la valeur de l'action  
       state.value.push(action.payload);
+      console.log(state.value)
       console.log("ajouter")
     },
 

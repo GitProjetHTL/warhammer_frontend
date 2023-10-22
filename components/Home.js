@@ -29,7 +29,7 @@ function Home() {
     fetch(`http://localhost:3000/figure`)
     .then(response => response.json())
     .then(data => {
-      console.log()
+      console.log(data)
       const figure = data.data.map(item => ({
         id: item._id,
         name: item.name,
@@ -45,45 +45,47 @@ function Home() {
         dispatch(addProduct(product));
       });
     });
+
+
+    fetch("http://localhost:3000/wargame")
+    .then(response => response.json())
+    .then(data=>{
+      console.log(data)
+      
+     const codex = data.data.map(item => ({
+      id:item._id,
+      name: item.name,
+      img: item.img,
+      price: item.price,
+      description: item.description,
+      quantite:0,
+       })
+      );
+      codex.forEach(codex=> {
+        dispatch(addProduct(codex));
+      });
+
+
+    })
+    fetch("http://localhost:3000/paint")
+    .then(response => response.json())
+    .then(data=>{
+      console.log(data)
+      
+     const paint = data.data.map(item => ({
+      id:item._id,
+      name: item.name,
+      img: item.img,
+      price: item.price,
+      description: item.description,
+      quantite:0,
+       })
+      );
+      paint.forEach(paint => {
+        dispatch(addProduct(paint));
+      });
+    })
   }, [newProduct])
-      // fetch("http://localhost:3000/wargame")
-      // .then(response => response.json())
-      // .then(data=>{
-      //   // console.log(data)
-        
-      //  const codex = data.data.map(item => ({
-      //   id:item._id,
-      //   name: item.name,
-      //   img: item.img,
-      //   price: item.price,
-      //   description: item.description,
-      //   quantite:0,
-      //    })
-      //   );
-      //   codex.forEach(codex=> {
-      //     dispatch(addProduct(codex));
-      //   });
-
-
-      // })
-      // fetch("http://localhost:3000/paint")
-      // .then(response => response.json())
-      // .then(data=>{
-      //   // console.log(data)
-        
-      //  const paint = data.data.map(item => ({
-      //   id:item._id,
-      //   name: item.name,
-      //   img: item.img,
-      //   price: item.price,
-      //   description: item.description,
-      //   quantite:0,
-      //    })
-      //   );
-      //   paint.forEach(paint => {
-      //     dispatch(addProduct(paint));
-      //   });
-      // })
     
 
 
