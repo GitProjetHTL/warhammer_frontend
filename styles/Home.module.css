@@ -11,11 +11,12 @@
 .lien{
     text-decoration: none;
     color: white;
+    width: center ;
+    
 }
 
 .selection{
-    width: 200px;
-    height: 50px;
+    width: auto;
     border: 1px black solid;
     font-size: larger;
     text-align: center;
@@ -38,17 +39,18 @@
     color: white;
     background-image: url("../public/acceuil.jpg") ;
     background-size:cover;
+    background-position: center;
     height: 120vh;
     
 }
-
 .content_presentation{
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 2rem 2rem 3rem 2rem;
-    width: 30vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* padding: 2rem 2rem 3rem 2rem; */
+  /* width: 30vw; */
+  width: auto;
+  padding: 2rem;
 }
-
-.more{
+/* .more{
     text-decoration: none;
     color: white;
     position: relative;
@@ -59,7 +61,22 @@
     width: 7vw;
     transition: all 1.5s;
     background-color: rgba(0, 0, 0, 0.8);
+} */
+
+.more{
+  /* text-decoration: none; */
+  color: white;
+
+  /* position: relative;
+  left: 30vw;
+  top: -2vh; */
+  border: 1px solid black;
+  /* padding: 1rem; */
+  /* width: 7vw; */
+  transition: all 1.5s;
+  background-color: rgba(0, 0, 0, 0.8);
 }
+
 
 .more:hover{
     background-color:white;
@@ -68,9 +85,9 @@
 }
 
 .choice{
-    margin-top: 5rem;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
 
 }
 
@@ -114,25 +131,26 @@
 
 
 .header_top{
-    display: flex;
-    justify-content: space-between;
-    height: 5vh;
-    align-items: center;
-    padding: 0 2rem;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-  }
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
   
   .contact ,.subscribe {
     text-decoration: none;
     color: white;
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 
   .header_right{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly
     
   }
   
@@ -180,4 +198,166 @@
     
   }
 
+  /* ********** MEDIA QUERIES (MEDIUM DEVICES) ********** */
+
+@media screen and (max-width:1024px) {
+  .content_collection{
+    background-image: url("../public/collection.jpg") ;
+    background-size:cover;
+    width: auto;
+  }
   
+  .content_paint{
+    background-image: url("../public/paint.jpg") ;
+    background-size:cover;
+    width: auto;
+  }
+  
+  .content_wargame{
+    background-image: url("../public/wargame.jpg") ;
+    background-size:cover;
+    background-position: center;
+    width: auto;
+  }
+  .choice{
+    margin-top: 5rem;
+    display: block;
+    justify-content: center;
+  
+  }
+  .discribe{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: auto;
+    height: auto;
+    /* position: relative;
+    top: 70vh;
+    left: 70vw; */
+    padding: 1rem;
+  }
+  .more{
+    /* text-decoration: none; */
+    color: white;
+    /* position: relative;
+    left: 30vw;
+    top: -2vh; */
+    border: 1px solid black;
+    width: auto;
+    
+    /* width: 7vw; */
+    transition: all 1.5s;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  
+  .content_presentation{
+    background-color: rgba(0, 0, 0, 0.8);
+    /* padding: 2rem 2rem 3rem 2rem; */
+    /* width: 30vw; */
+    width: auto;
+    padding: 2rem;
+  }
+  .choice{
+    margin-top: 5rem;
+    display: block;
+    justify-content: center;
+  
+  }
+  
+}
+
+/* ********** MEDIA QUERIES (SMALLDEVICES) ********** */
+
+@media screen and (max-width:600px) {
+  .container{
+    display: block;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+.header_bot{
+  display: block;
+  margin: 2rem 0;
+  text-align: center;
+}
+.choice{
+  margin-top: 5rem;
+  display: block;
+  justify-content: center;
+
+}
+
+.content_collection{
+  background-image: url("../public/collection.jpg") ;
+  background-size:cover;
+  width: auto;
+}
+
+.content_paint{
+  background-image: url("../public/paint.jpg") ;
+  background-size:cover;
+  width: auto;
+}
+
+.content_wargame{
+  background-image: url("../public/wargame.jpg") ;
+  background-size:cover;
+  background-position: center;
+  width: auto;
+}
+.discribe{
+  background-color: rgba(0, 0, 0, 0.8);
+  width: auto;
+  height: auto;
+  /* position: relative;
+  top: 70vh;
+  left: 70vw; */
+  padding: 1rem;
+}
+.more{
+  /* text-decoration: none; */
+  color: white;
+  /* position: relative;
+  left: 30vw;
+  top: -2vh; */
+  border: 1px solid black;
+  width: auto;
+  
+  /* width: 7vw; */
+  transition: all 1.5s;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content_presentation{
+  background-color: rgba(0, 0, 0, 0.8);
+  /* padding: 2rem 2rem 3rem 2rem; */
+  /* width: 30vw; */
+  width: auto;
+  padding: 2rem;
+}
+.logo{
+  width: 300px;
+  height: 125px;
+  margin: 2rem;
+}
+
+.header_top{
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+}
+
+.contact ,.subscribe {
+  text-decoration: none;
+  color: white;
+ margin: 50px 0;
+}
+
+
+
+}

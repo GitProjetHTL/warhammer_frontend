@@ -14,9 +14,10 @@ export const cartSlice = createSlice({
       const contentExist= state.cartItems.find(item=> item.id == action.payload.id)
       if (contentExist) {
         state.cartItems.filter(item=> item.id == action.payload.id).find(item =>item.quantite+=1)
-        state.cartItems.filter(item=> item.id == action.payload.id).find(item =>item.price+=action.payload.price)
+        state.total = action.payload.price*state.cartItems.quantite;
       }else{
         state.cartItems.push(action.payload);
+        state.total += action.payload.price; // Ajoutez le prix de l'article au prix total
       }
       //state affiche la valeur actuell et action.payload stock la valeur de l'action  
       // Ajouter un élément au panier en utilisant la méthode push
@@ -35,7 +36,8 @@ export const cartSlice = createSlice({
         //selectionner l'objet sui correspond a ID
         console.log("a été retirée",state)
         state.cartItems.filter(item=> item.id == action.payload.id).find(item =>item.quantite-=1)
-        state.cartItems.find(item =>item.price-=action.payload.price)
+        // state.cartItems.find(item =>item.price-=action.payload.price)
+        state.total = action.payload.price*state.cartItems.quantite;
         
       }else{
         state.cartItems = state.cartItems.filter(item => item.id !== action.payload.id);

@@ -156,7 +156,7 @@ function Home() {
                 Nous contacter
             </div>
             <div  className={styles.header_right}>
-                  <div className={styles.subscribe} onClick={()=>setNavigation("panier")}>Panier <FontAwesomeIcon icon={faCartShopping} /></div>
+                  <div className={styles.subscribe} onClick={()=>setNavigation("panier")}>Panier</div>
               <div className={styles.subscribe} onClick={()=>setNavigation("sign_up")}>
                   {user.username == null ? "S'inscrire / Se connecter" :"Profil"}
               </div>

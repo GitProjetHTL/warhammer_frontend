@@ -55,3 +55,17 @@
     .quantite.price.delete{
        margin: 0 1rem;
     }
+
+    /* ********** MEDIA QUERIES (MEDIUM DEVICES) ********** */
+
+@media screen and (max-width:1024px) {
+    
+    }
+  
+  
+  /* ********** MEDIA QUERIES (SMALLDEVICES) ********** */
+  
+  @media screen and (max-width:600px) {
+   
+  }
+  
