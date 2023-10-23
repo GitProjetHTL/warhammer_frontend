@@ -31,7 +31,7 @@ function Home() {
     .then(data => {
       console.log(data)
       const figure = data.data.map(item => ({
-        id: item._id,
+        id: item.id,
         name: item.name,
         img: item.img,
         price: item.price,
@@ -110,7 +110,7 @@ function Home() {
         <div className={styles.content_presentation}>
           <h1>Bienvenue dans l'univers de warhammer</h1>
           <p>Le hobby Warhammer propose plusieur type d'activité:</p>
-          <ul>
+          <ul className={styles.content_list}>
             <li>La collection d'armée.</li>
             <li>Le modelisme et la peinture de figurines.</li>
             <li>Le Jeux de combat de figurines.</li>

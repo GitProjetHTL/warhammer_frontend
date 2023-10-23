@@ -22,7 +22,7 @@ function WargameContent(props) {
       img: props.img,
       price: props.price,
       description: props.description,
-      quantite:1,
+      quantite:0,
     };
     console.log(product);
     dispatch(addToCart(product));
@@ -51,11 +51,11 @@ function WargameContent(props) {
   return (
     <>
      <div className={styles.content} >
-      <div className={styles.content_left}>
+      <div className={styles.content_top}>
         <h2>{props.name}</h2>
         <img src={props.img} alt={props.name} className={styles.img}  />
       </div>
-        <div className={styles.content_right}>
+        <div className={styles.content_bot}>
           <div>
             <div className={styles.description}>{props.description}</div>
             <div className={styles.price}>{props.price}€</div>

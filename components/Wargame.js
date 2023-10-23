@@ -14,7 +14,7 @@ useEffect(() => {
     // console.log(data)
     
    const codex = data.data.map(item => ({
-    id:item._id,
+    id: item._id,
     name: item.name,
     img: item.img,
     price: item.price,
@@ -32,6 +32,7 @@ console.log(Codex)
 let Content =  Codex.map((item, index) => (
   <WargameContent
     key={index}
+    id={item._id}
     name={item.name}
     img={item.img}
     price={item.price}
@@ -47,7 +48,7 @@ let Content =  Codex.map((item, index) => (
         <div className={styles.content_presentation}>
           <h1>Bienvenue dans l'univers de warhammer</h1>
           <p>Le hobby Warhammer propose plusieur type d'activité:</p>
-          <ul>
+          <ul className={styles.content_list}>
             <li>La collection d'armée.</li>
             <li>Le modelisme et la peinture de figurines.</li>
             <li>Le Jeux de combat de figurines.</li>
@@ -57,7 +58,7 @@ let Content =  Codex.map((item, index) => (
       </div>
         <h2>LES CODEX</h2>
         <p>Commencer par le codex de votre faction afin de connaitre l'histoire et les unitées qui compose cette faction.</p>
-      <div className={styles.content_bot}>
+      <div className={styles.all_content}>
 
        {Content}
 

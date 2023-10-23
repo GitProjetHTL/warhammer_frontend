@@ -50,6 +50,10 @@
   width: auto;
   padding: 2rem;
 }
+
+.content_list{
+margin-bottom: 2rem;
+}
 /* .more{
     text-decoration: none;
     color: white;
@@ -71,11 +75,14 @@
   left: 30vw;
   top: -2vh; */
   border: 1px solid black;
-  /* padding: 1rem; */
+  padding: 1rem;
   /* width: 7vw; */
   transition: all 1.5s;
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+
+
 
 
 .more:hover{
@@ -119,8 +126,8 @@
 
 .discribe{
     background-color: rgba(0, 0, 0, 0.8);
-    width: 30vw;
-    height: 24vh;
+    width: auto;
+    height: auto;
     /* position: relative;
     top: 70vh;
     left: 70vw; */
@@ -242,6 +249,7 @@
     top: -2vh; */
     border: 1px solid black;
     width: auto;
+    
     
     /* width: 7vw; */
     transition: all 1.5s;

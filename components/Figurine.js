@@ -15,7 +15,7 @@ function Figurine() {
       console.log(data)
       
      const figure = data.data.map(item => ({
-        id:item._id,
+         id: item._id,
         name: item.name,
         img: item.img,
         price: item.price,
@@ -27,21 +27,24 @@ function Figurine() {
       //crée un réducer de database<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
       
       setFigure(figure);
+
     })
   }, [Type])
   
  
   
   let Content =  Figure.map((item, index) => (
-    <WargameContent
-      id={item.id}
-      key={index}
-      name={item.name}
-      img={item.img}
-      price={item.price}
-      description={item.description}
-      type={item.type}
-    />
+    
+      <WargameContent
+        id={item.id}
+        key={index}
+        name={item.name}
+        img={item.img}
+        price={item.price}
+        description={item.description}
+        type={item.type}
+      />
+  
   ))
   return (
     <>
@@ -50,7 +53,7 @@ function Figurine() {
         <div className={styles.content_presentation}>
           <h1>Bienvenue dans l'univers de warhammer</h1>
           <p>Le hobby Warhammer propose plusieur type d'activité:</p>
-          <ul>
+          <ul className={styles.content_list}>
             <li>La collection d'armée.</li>
             <li>Le modelisme et la peinture de figurines.</li>
             <li>Le Jeux de combat de figurines.</li>
@@ -68,7 +71,12 @@ function Figurine() {
         </div>
         <div>
         </div>
-       {Content}
+        <div>
+        </div >
+        <div className={styles.all_content}>
+          {Content}
+
+        </div>
       </div>
     </div>
     </>

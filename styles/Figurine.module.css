@@ -9,23 +9,27 @@
 
 .content_presentation{
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 2rem 2rem 3rem 2rem;
-    width: 30vw;
-}
+    /* padding: 2rem 2rem 3rem 2rem; */
+    /* width: 30vw; */
+    width: auto;
+    padding: 2rem;
+  }
 
 .more{
-    text-decoration: none;
+    /* text-decoration: none; */
     color: white;
-    position: relative;
-    left: 20vw;
-    top: -2vh;
+  
+    /* position: relative;
+    left: 30vw;
+    top: -2vh; */
     border: 1px solid black;
     padding: 1rem;
-    width: 7vw;
+    /* width: 7vw; */
     transition: all 1.5s;
     background-color: rgba(0, 0, 0, 0.8);
-}
-
+  }
+  
+  
 .more:hover{
     background-color:white;
     color: black;
@@ -48,6 +52,7 @@
 .death,
 .destruction,
 .allArmy{
+    
     padding: 4vh;
     color: white;
     transition: all 0.8s;
@@ -61,4 +66,49 @@
     scale: 1.2;
 }
 
+.content_list{
+    margin-bottom: 2rem;
+    }
 
+.all_content{
+    display: grid;
+grid-template-columns: repeat(2, 1fr);
+/* grid-template-rows: repeat(5, 1fr); */
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}    
+
+ /* ********** MEDIA QUERIES (MEDIUM DEVICES) ********** */
+
+ @media screen and (max-width:1024px) {
+
+    .all_content{
+        display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* grid-template-rows: repeat(5, 1fr); */
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }    
+    
+  }
+  
+  /* ********** MEDIA QUERIES (SMALLDEVICES) ********** */
+  
+  @media screen and (max-width:600px) {
+  .all_content{
+    display: grid;
+grid-template-columns: repeat(1, 1fr);
+/* grid-template-rows: repeat(5, 1fr); */
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}    
+
+.armyFilter{
+    display: block;
+    justify-content: space-around;
+    text-align: center;
+   
+}
+
+
+}

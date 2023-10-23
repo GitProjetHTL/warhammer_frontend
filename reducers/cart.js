@@ -14,6 +14,7 @@ export const cartSlice = createSlice({
       const contentExist= state.cartItems.find(item=> item.id == action.payload.id)
       if (contentExist) {
         state.cartItems.filter(item=> item.id == action.payload.id).find(item =>item.quantite+=1)
+        
         state.total = action.payload.price*state.cartItems.quantite;
       }else{
         state.cartItems.push(action.payload);

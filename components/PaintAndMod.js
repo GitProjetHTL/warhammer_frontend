@@ -11,15 +11,14 @@ const PaintAndMod = () => {
     .then(response => response.json())
     .then(data=>{
       // console.log(data)
-      
      const paint = data.data.map(item => ({
-      id:item._id,
-      name: item.name,
-      img: item.img,
-      price: item.price,
-      description: item.description,
-      type:item.type,
-      quantite:0,
+        id: item._id,
+        name: item.name,
+        img: item.img,
+        price: item.price,
+        description: item.description,
+        type:item.type,
+        quantite:0,
        })
       );
       setPaint(paint);
@@ -31,6 +30,7 @@ const PaintAndMod = () => {
   let Content =  Paint.map((item, index) => (
     <WargameContent
       key={index}
+      id={item._id}
       name={item.name}
       img={item.img}
       price={item.price}
@@ -44,7 +44,7 @@ const PaintAndMod = () => {
         <div className={styles.content_presentation}>
           <h1>Bienvenue dans l'univers de warhammer</h1>
           <p>Le hobby Warhammer propose plusieur type d'activité:</p>
-          <ul>
+          <ul className={styles.content_list}>
             <li>La collection d'armée.</li>
             <li>Le modelisme et la peinture de figurines.</li>
             <li>Le Jeux de combat de figurines.</li>
@@ -52,7 +52,7 @@ const PaintAndMod = () => {
           <a href="#content_bot" className={styles.more}>more info ...</a>
         </div>
       </div>
-      <div id='content_bot'>
+      <div className={styles.all_content}>
        {Content}
 
       </div>
