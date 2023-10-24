@@ -32,7 +32,7 @@ console.log(Codex)
 let Content =  Codex.map((item, index) => (
   <WargameContent
     key={index}
-    id={item._id}
+    id={item.id}
     name={item.name}
     img={item.img}
     price={item.price}

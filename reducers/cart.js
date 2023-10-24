@@ -19,6 +19,7 @@ export const cartSlice = createSlice({
       }else{
         state.cartItems.push(action.payload);
         state.total += action.payload.price; // Ajoutez le prix de l'article au prix total
+        state.cartItems.filter(item=> item.id == action.payload.id).find(item =>item.quantite+=1)
       }
       //state affiche la valeur actuell et action.payload stock la valeur de l'action  
       // Ajouter un élément au panier en utilisant la méthode push

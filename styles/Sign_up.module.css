@@ -1,14 +1,17 @@
+
 .presentation{
     padding: 1rem;
     color: white;
     height: 90vh;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .content_presentation{
     background-color: rgba(0, 0, 0, 0.8);
     padding: 2rem 2rem 3rem 2rem;
-    width: 30vw;
+    width: 50vw;
     text-align: center;
     margin: 4rem auto;
 }
@@ -30,12 +33,43 @@
 
 }
 
-.input{
-    padding: 1rem;
-}
 
 .form_sign_in{
-    display: flex;
-      justify-content: space-between;
-      align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        
   }
+   /* ********** MEDIA QUERIES (MEDIUM DEVICES) ********** */
+
+ @media screen and (max-width:1024px) {
+
+    .form_sign_in{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        
+  }
+    
+  }
+  
+
+    /* ********** MEDIA QUERIES (SMALLDEVICES) ********** */
+  
+    @media screen and (max-width:600px) {
+        .form_sign_in{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            
+      }
+      .presentation{
+        padding: 1rem;
+        color: white;
+        height: 90vh;
+        
+    }
+    }
