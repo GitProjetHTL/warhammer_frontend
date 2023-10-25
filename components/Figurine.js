@@ -9,7 +9,7 @@ function Figurine() {
    const [Type,setType]=useState("")
    const dispatch = useDispatch();
   useEffect(() => {
-    fetch(`http://localhost:3000/figure/${Type}`)
+    fetch(`https://warhammer-backend.vercel.app/${Type}`)
     .then(response => response.json())
     .then(data=>{
       console.log(data)

@@ -8,7 +8,7 @@ const [Codex,setCodex]=useState([]);
 
 
 useEffect(() => {
-  fetch("http://localhost:3000/wargame")
+  fetch("https://warhammer-backend.vercel.app/wargame")
   .then(response => response.json())
   .then(data=>{
     // console.log(data)

@@ -7,7 +7,7 @@ const PaintAndMod = () => {
   const [Paint,setPaint]=useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/paint")
+    fetch("https://warhammer-backend.vercel.app/paint")
     .then(response => response.json())
     .then(data=>{
       // console.log(data)

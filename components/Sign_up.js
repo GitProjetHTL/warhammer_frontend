@@ -72,7 +72,7 @@ const handleSignIn = (e) => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page par défaut
 
-    fetch(`http://localhost:3000/user/signin`, {
+    fetch(`https://warhammer-backend.vercel.app/user/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

@@ -26,7 +26,7 @@ function Home() {
   console.log(user)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/figure`)
+    fetch(`https://warhammer-backend.vercel.app/figure`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -47,7 +47,7 @@ function Home() {
     });
 
 
-    fetch("http://localhost:3000/wargame")
+    fetch("https://warhammer-backend.vercel.app/wargame")
     .then(response => response.json())
     .then(data=>{
       console.log(data)
@@ -67,7 +67,7 @@ function Home() {
 
 
     })
-    fetch("http://localhost:3000/paint")
+    fetch("https://warhammer-backend.vercel.app/paint")
     .then(response => response.json())
     .then(data=>{
       console.log(data)
