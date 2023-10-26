@@ -26,65 +26,74 @@ function Home() {
   console.log(user)
 
   useEffect(() => {
-    fetch(`https://warhammer-backend.vercel.app/figure`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      const figure = data.data.map(item => ({
-        id: item.id,
-        name: item.name,
-        img: item.img,
-        price: item.price,
-        description: item.description,
-        type: item.type,
-        quantite: 0,
-      }));
+    fetch('https://warhammer-backend.vercel.app/figure')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Traitez les données ici
+  })
+  .catch(error => {
+    console.error('Erreur de fetch :', error);
+  });
+    // fetch(`https://warhammer-backend.vercel.app/figure`)
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log(data)
+    //   const figure = data.data.map(item => ({
+    //     id: item.id,
+    //     name: item.name,
+    //     img: item.img,
+    //     price: item.price,
+    //     description: item.description,
+    //     type: item.type,
+    //     quantite: 0,
+    //   }));
 
-      // Dispatch each product individually
-      figure.forEach(product => {
-        dispatch(addProduct(product));
-      });
-    });
+    //   // Dispatch each product individually
+    //   figure.forEach(product => {
+    //     dispatch(addProduct(product));
+    //   });
+    // });
 
 
-    fetch("https://warhammer-backend.vercel.app/wargame")
-    .then(response => response.json())
-    .then(data=>{
-      console.log(data)
+    // fetch("https://warhammer-backend.vercel.app/wargame")
+    // .then(response => response.json())
+    // .then(data=>{
+    //   console.log(data)
       
-     const codex = data.data.map(item => ({
-      id:item._id,
-      name: item.name,
-      img: item.img,
-      price: item.price,
-      description: item.description,
-      quantite:0,
-       })
-      );
-      codex.forEach(codex=> {
-        dispatch(addProduct(codex));
-      });
+    //  const codex = data.data.map(item => ({
+    //   id:item._id,
+    //   name: item.name,
+    //   img: item.img,
+    //   price: item.price,
+    //   description: item.description,
+    //   quantite:0,
+    //    })
+    //   );
+    //   codex.forEach(codex=> {
+    //     dispatch(addProduct(codex));
+    //   });
 
 
-    })
-    fetch("https://warhammer-backend.vercel.app/paint")
-    .then(response => response.json())
-    .then(data=>{
-      console.log(data)
+    // })
+    // fetch("https://warhammer-backend.vercel.app/paint")
+    // .then(response => response.json())
+    // .then(data=>{
+    //   console.log(data)
       
-     const paint = data.data.map(item => ({
-      id:item._id,
-      name: item.name,
-      img: item.img,
-      price: item.price,
-      description: item.description,
-      quantite:0,
-       })
-      );
-      paint.forEach(paint => {
-        dispatch(addProduct(paint));
-      });
-    })
+    //  const paint = data.data.map(item => ({
+    //   id:item._id,
+    //   name: item.name,
+    //   img: item.img,
+    //   price: item.price,
+    //   description: item.description,
+    //   quantite:0,
+    //    })
+    //   );
+    //   paint.forEach(paint => {
+    //     dispatch(addProduct(paint));
+    //   });
+    // })
   }, [newProduct])
     
 
