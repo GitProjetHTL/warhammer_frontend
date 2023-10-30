@@ -266,6 +266,12 @@ const handleSignIn = (e) => {
   <div>
   <p>Bienvenue {user.username} </p>
   </div>
+    <div>
+      <button type="submit">modifier mon profil</button>
+    </div>
+    <div>
+      <button type="submit">modifier mon mor de passe</button>
+    </div>
         <div onClick={()=>handleDelete()}>
             <button type="submit">Se deconnecter</button>
         </div>
