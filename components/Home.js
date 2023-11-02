@@ -17,14 +17,39 @@ import {addProduct} from '../reducers/allProduct';
 
 function Home() {
   
+   const BACKEND="https://warhammer-backend.vercel.app"
    const dispatch = useDispatch();
    const [newProduct,setNewProduct]=useState("")
 
   const [Navigation,setNavigation]=useState("");
   const user= useSelector((state) => state.user.value)
 
+  const[search,setSearch]=useState("")
+
   console.log(user)
 
+  useEffect(()=>{
+    fetch(`${BACKEND}figure/${search}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      const figure = data.data.map(item => ({
+        id: item.id,
+        name: item.name,
+        img: item.img,
+        price: item.price,
+        description: item.description,
+        type: item.type,
+        quantite: 0,
+      }));
+
+      // Dispatch each product individually
+      figure.forEach(product => {
+        dispatch(addProduct(product));
+      });
+    });
+
+  },[search])
   useEffect(() => {
   //   fetch('http://localhost:3000/figure')
   // .then(response => response.json())
@@ -96,8 +121,7 @@ function Home() {
     // })
   }, [newProduct])
     
-
-
+  
   
   
   const content = () =>{
@@ -176,8 +200,8 @@ function Home() {
             <img src="/logo.png" alt="logo" className={styles.logo} />
             <form action="" method="get">
                 <div>
-                    <FaSearch className={styles.icon_search} />
-                    <input type="text" name="search" className={styles.search_bar} placeholder="Rechercher ici ..." />
+                    <FaSearch className={styles.icon_search}  onClick={handleSearch} />
+                    <input type="text" name="search" className={styles.search_bar} onChange={(e)=>setSearch(e.target.value)} placeholder="Rechercher ici ..." />
                 </div>
             </form>
             <div className={styles.language} >
