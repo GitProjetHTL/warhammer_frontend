@@ -29,7 +29,7 @@ function Home() {
   console.log(user)
 
   useEffect(()=>{
-    fetch(`${BACKEND}figure/${search}`)
+    fetch(`${BACKEND}/figure/${search}`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -50,7 +50,7 @@ function Home() {
     });
 
   },[search])
-  
+
   useEffect(() => {
   //   fetch('http://localhost:3000/figure')
   // .then(response => response.json())
@@ -61,7 +61,7 @@ function Home() {
   // .catch(error => {
   //   console.error('Erreur de fetch :', error);
   // });
-    fetch(`http://localhost:3000/figure`)
+    fetch(`${BACKEND}/figure`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -201,7 +201,7 @@ function Home() {
             <img src="/logo.png" alt="logo" className={styles.logo} />
             <form action="" method="get">
                 <div>
-                    <FaSearch className={styles.icon_search}  onClick={handleSearch} />
+                    <FaSearch className={styles.icon_search} />
                     <input type="text" name="search" className={styles.search_bar} onChange={(e)=>setSearch(e.target.value)} placeholder="Rechercher ici ..." />
                 </div>
             </form>
