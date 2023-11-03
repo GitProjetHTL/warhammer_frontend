@@ -50,6 +50,7 @@ function Home() {
     });
 
   },[search])
+  
   useEffect(() => {
   //   fetch('http://localhost:3000/figure')
   // .then(response => response.json())
