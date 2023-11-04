@@ -46,7 +46,26 @@ const handleSignIn = (e) => {
   });
 
   //faire un back des personnes qui crée un utilisateur<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-};
+  
+    // Envoyer les données en utilisant une requête POST
+    fetch('https://warhammer-backend.vercel.app/user/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: this.state.inputData }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Faire quelque chose avec la réponse du serveur (si nécessaire)
+        console.log(data);
+      })
+      .catch(error => {
+        // Gérer les erreurs (si nécessaire)
+        console.error(error);
+      });
+  }
+
 
 
   console.log(user)

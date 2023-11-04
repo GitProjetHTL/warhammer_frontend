@@ -1,19 +1,29 @@
 import styles from '../styles/Wargame.module.css'
 import { useState,useEffect } from 'react';
 import WargameContent from './WargameContent'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 const Wargame = () => {
 
 const [Codex,setCodex]=useState([]);
 
+let user=useSelector(state => state.user.value);
 
-useEffect(() => {
-  fetch("https://warhammer-backend.vercel.app/wargame")
-  .then(response => response.json())
-  .then(data=>{
+
+//c'est une fonction <<<<<<<<<<
+const getWargame = async () => {
+  const result = await axios.get('https://warhammer-backend.vercel.app/wargame')
+  console.log("date de result",result.data.data)
+  const resultFormated = result.data.data;
+  
+  // fetch("https://warhammer-backend.vercel.app/wargame")
+  //faire une version axios asyn a wait
+  // .then(response => response.json())
+  // .then(data=>{
     // console.log(data)
     
-   const codex = data.data.map(item => ({
+   const codex = resultFormated.map(item => ({
     id: item._id,
     name: item.name,
     img: item.img,
@@ -22,10 +32,18 @@ useEffect(() => {
     type:item.type,
     quantite:0,
      })
-    );
+   )
     setCodex(codex);
-  })
-}, [])
+  }
+
+
+
+ useEffect(()=>{
+
+  getWargame()
+  console.log( "ici",getWargame)
+  },[]);
+
 
 console.log(Codex)
 
