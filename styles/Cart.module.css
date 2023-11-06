@@ -7,9 +7,15 @@
     justify-content: center;
     align-items: center;
     background-color: grey;
+    
 }
 .img{
     height: 30vh;
+}
+
+.empty{
+    height: 80vh;
+    text-align: center;
 }
 
 .content_right{

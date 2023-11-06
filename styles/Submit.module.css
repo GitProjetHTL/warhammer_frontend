@@ -17,15 +17,18 @@
 }
 
 .more{
-    text-decoration: none;
-    color: white; 
+    /* text-decoration: none; */
+    color: white;
+  
+    /* position: relative;
+    left: 30vw;
+    top: -2vh; */
     border: 1px solid black;
-    margin: 1rem ;
-    padding: 1rem 2rem;
-    width: 10vw;
+    padding: 1rem;
+    /* width: 7vw; */
     transition: all 1.5s;
     background-color: rgba(0, 0, 0, 0.8);
-}
+  }
 
 .more:hover{
     background-color:white;
@@ -43,3 +46,41 @@
     padding: 1rem;
   }
 
+ /* ********** MEDIA QUERIES (MEDIUM DEVICES) ********** */
+
+ @media screen and (max-width:1024px) {
+
+  
+    
+  }
+  
+  /* ********** MEDIA QUERIES (SMALLDEVICES) ********** */
+  
+  @media screen and (max-width:600px) {
+ 
+    .input{
+        padding: 0rem;
+    }
+
+    .textarea{
+        width: auto;
+        height: auto;
+    }
+
+    .more{
+        /* text-decoration: none; */
+        color: white;
+      
+        /* position: relative;
+        left: 30vw;
+        top: -2vh; */
+        border: 1px solid black;
+        padding: 1rem;
+        /* width: 7vw; */
+        transition: all 1.5s;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+    
+
+}

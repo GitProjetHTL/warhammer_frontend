@@ -11,7 +11,7 @@ const Submit = () => {
             <h3>Email</h3>
             <input type="text" placeholder="Email" className={styles.input}/>
             <h3>Votre retour</h3>
-            <textarea name="return" id="return" cols="30" rows="10"></textarea>
+            <textarea name="return" id="return" cols="20" rows="10" className={styles.textarea}></textarea>
             <br />
             <input type="button" value="Soumettre" className={styles.more} />
         </div>

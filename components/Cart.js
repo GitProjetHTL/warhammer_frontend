@@ -20,7 +20,13 @@ const Cart = () => {
   };
 
   // Vous pouvez générer le contenu du panier directement ici
-  const content = cartItems.map((item, index) => (
+
+  const content="";
+  
+  if (priceTotal==0) {
+    content = <div ClassName={styles.empty}> votre panier est vide </div> 
+  }else{
+  content = cartItems.map((item, index) => (
 
 
     <div key={index} className={styles.content}>
@@ -43,17 +49,18 @@ const Cart = () => {
     </div>
   ));
 
+}
   return (
     <div>
       <h2>Panier</h2>
-      <div>
+      <div  className={styles.all_content}>
         <div>{content}</div>
+      </div>
         <div className={styles.content_bot}>
           <div>Montant Total:</div>
           <div>{priceTotal}€</div>
         </div>
         <button>Passer au paiement</button>
-      </div>
     </div>
   );
 };
