@@ -26,11 +26,11 @@ const Cart = () => {
     <div key={index} className={styles.content}>
       <div className={styles.content_left}>
         <div>
+        <h2>{item.name}</h2>
           <img src={item.img} alt={item.name} className={styles.img} />
         </div>
       </div>
       <div className={styles.content_right}>
-        <h2>{item.name}</h2>
         <div>{item.description}</div>
       </div>
       <div className={styles.content_delete}>
