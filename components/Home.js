@@ -24,32 +24,34 @@ function Home() {
   const [Navigation,setNavigation]=useState("");
   const user= useSelector((state) => state.user.value)
 
-  const[search,setSearch]=useState("")
+  const[search,setSearch]=useState(false)
+
+  const[searchResult,setSearchResult]=useState("")
 
   console.log(user)
 
-  useEffect(()=>{
-    fetch(`${BACKEND}/figure/${search}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      const figure = data.data.map(item => ({
-        id: item.id,
-        name: item.name,
-        img: item.img,
-        price: item.price,
-        description: item.description,
-        type: item.type,
-        quantite: 0,
-      }));
+  // useEffect(()=>{
+  //   fetch(`${BACKEND}/figure/${search}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     const figure = data.data.map(item => ({
+  //       id: item.id,
+  //       name: item.name,
+  //       img: item.img,
+  //       price: item.price,
+  //       description: item.description,
+  //       type: item.type,
+  //       quantite: 0,
+  //     }));
 
-      // Dispatch each product individually
-      figure.forEach(product => {
-        dispatch(addProduct(product));
-      });
-    });
+  //     // Dispatch each product individually
+  //     figure.forEach(product => {
+  //       dispatch(addProduct(product));
+  //     });
+  //   });
 
-  },[search])
+  // },[search])
 
   useEffect(() => {
   //   fetch('http://localhost:3000/figure')
@@ -123,63 +125,102 @@ function Home() {
   }, [newProduct])
     
   
+  useEffect(() => {
+    if(search){
+      fetch(`${BACKEND}/figure/search/${search}`)
+      .then((response) => response.json())
+      .then(data => {
+            console.log(data)
+            const figure = data.data.map(item => ({
+              id: item.id,
+              name: item.name,
+              img: item.img,
+              price: item.price,
+              description: item.description,
+              type: item.type,
+              quantite: 0,
+            }));
+        
+        setSearchResult(figure)
+      })
+      .catch((error) => {
+        console.error("Une erreur s'est produite lors de la récupération des données", error);
+        // Afficher un message d'erreur dans la console
+      });
+    }
+  }, [search]);
+
+
+
+
+
   
   
   const content = () =>{
-    if (Navigation==="wargame") {
-      return <Wargame/>;
-    }else if (Navigation==="figure") {
-      return <Figurine/>;
-    }else if(Navigation==="paint"){
-      return <PaintAndMod/>;
-    }else if(Navigation==="submit"){
-      return <Submit/>;
-    }else if(Navigation==="panier"){
-        return <Cart/>;
-    }else if(Navigation==="sign_up"){
-      return <Sign_up/>;
+    if (!search) {
+      
+      if (Navigation==="wargame") {
+        return <Wargame/>;
+      }else if (Navigation==="figure") {
+        return <Figurine/>;
+      }else if(Navigation==="paint"){
+        return <PaintAndMod/>;
+      }else if(Navigation==="submit"){
+        return <Submit/>;
+      }else if(Navigation==="panier"){
+          return <Cart/>;
+      }else if(Navigation==="sign_up"){
+        return <Sign_up/>;
+      }else{
+        return  <div>
+        <div className={styles.presentation}>
+          <div className={styles.content_presentation}>
+            <h1>Bienvenue dans l'univers de warhammer</h1>
+            <p>Le hobby Warhammer propose plusieur type d'activité:</p>
+            <ul className={styles.content_list}>
+              <li>La collection d'armée.</li>
+              <li>Le modelisme et la peinture de figurines.</li>
+              <li>Le Jeux de combat de figurines.</li>
+            </ul>
+            <a href="#content_bot" className={styles.more}>more info ...</a>
+          </div>
+        </div>
+        <div id='content_bot'>
+          <div className={styles.choice}>
+            <div className={styles.content_collection}>
+              <div className={styles.discribe}>
+                <h2>Collectionne une armée</h2>
+                <p>Choisisez une faction entre humain, mutant ou hérétique et commencer l'aventure warhammer.</p>
+                <div onClick={()=>setNavigation("figure")} className={styles.more}>more info ...</div>
+              </div>
+              </div>
+              <div  className={styles.content_paint}>
+                <div className={styles.discribe}>
+                  <h2>Equipez vous pour modélisée</h2>
+                  <p>Prennez vos pinceaux et vos peinture citadelle il est temps de personnaliser votre propre armée.</p>
+                  <div onClick={()=>setNavigation("paint")} className={styles.more}>more info ...</div>
+                </div>
+              </div>
+              <div  className={styles.content_wargame}>
+                <div className={styles.discribe}>
+                  <h2>Il est temps de faire la guerre.</h2>
+                  <p>Prenez votre armée partez en croisade face à d'autres passionée de la communautée Warhammer.</p>
+                  <div onClick={()=>setNavigation("wargame")} className={styles.more}>more info ...</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div> 
+      }
     }else{
-      return  <div>
-      <div className={styles.presentation}>
-        <div className={styles.content_presentation}>
-          <h1>Bienvenue dans l'univers de warhammer</h1>
-          <p>Le hobby Warhammer propose plusieur type d'activité:</p>
-          <ul className={styles.content_list}>
-            <li>La collection d'armée.</li>
-            <li>Le modelisme et la peinture de figurines.</li>
-            <li>Le Jeux de combat de figurines.</li>
-          </ul>
-          <a href="#content_bot" className={styles.more}>more info ...</a>
-        </div>
+      <div>
+        <h1>Vos Recherche</h1>
+        <div>{setSearchResult}</div>
+
       </div>
-      <div id='content_bot'>
-        <div className={styles.choice}>
-          <div className={styles.content_collection}>
-            <div className={styles.discribe}>
-              <h2>Collectionne une armée</h2>
-              <p>Choisisez une faction entre humain, mutant ou hérétique et commencer l'aventure warhammer.</p>
-              <div onClick={()=>setNavigation("figure")} className={styles.more}>more info ...</div>
-            </div>
-            </div>
-            <div  className={styles.content_paint}>
-              <div className={styles.discribe}>
-                <h2>Equipez vous pour modélisée</h2>
-                <p>Prennez vos pinceaux et vos peinture citadelle il est temps de personnaliser votre propre armée.</p>
-                <div onClick={()=>setNavigation("paint")} className={styles.more}>more info ...</div>
-              </div>
-            </div>
-            <div  className={styles.content_wargame}>
-              <div className={styles.discribe}>
-                <h2>Il est temps de faire la guerre.</h2>
-                <p>Prenez votre armée partez en croisade face à d'autres passionée de la communautée Warhammer.</p>
-                <div onClick={()=>setNavigation("wargame")} className={styles.more}>more info ...</div>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div> 
+    };
+
     }
-  };
   
 
   return (
@@ -204,6 +245,9 @@ function Home() {
                     <FaSearch className={styles.icon_search} />
                     <input type="text" name="search" className={styles.search_bar} onChange={(e)=>setSearch(e.target.value)} placeholder="Rechercher ici ..." />
                 </div>
+                <div>
+                  {searchResult}
+              </div>
             </form>
             <div className={styles.language} >
                 <p>FR:</p>
