@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCartShopping} from '@fortawesome/fontawesome-svg-core'
 import { useDispatch } from 'react-redux';
+import WargameContent from './WargameContent';
 
 
 import Figurine from './Figurine';
@@ -24,7 +25,7 @@ function Home() {
   const [Navigation,setNavigation]=useState("");
   const user= useSelector((state) => state.user.value)
 
-  const[search,setSearch]=useState(false)
+  const[search,setSearch]=useState("")
 
   const[searchResult,setSearchResult]=useState("")
 
@@ -53,7 +54,7 @@ function Home() {
 
   // },[search])
 
-  useEffect(() => {
+  // useEffect(() => {
   //   fetch('http://localhost:3000/figure')
   // .then(response => response.json())
   // .then(data => {
@@ -63,25 +64,25 @@ function Home() {
   // .catch(error => {
   //   console.error('Erreur de fetch :', error);
   // });
-    fetch(`${BACKEND}/figure`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      const figure = data.data.map(item => ({
-        id: item.id,
-        name: item.name,
-        img: item.img,
-        price: item.price,
-        description: item.description,
-        type: item.type,
-        quantite: 0,
-      }));
+    // fetch(`${BACKEND}/figure`)
+    // .then(response => response.json())
+    // .then(data => {
+    //   console.log(data)
+    //   const figure = data.data.map(item => ({
+    //     id: item.id,
+    //     name: item.name,
+    //     img: item.img,
+    //     price: item.price,
+    //     description: item.description,
+    //     type: item.type,
+    //     quantite: 0,
+    //   }));
 
-      // Dispatch each product individually
-      figure.forEach(product => {
-        dispatch(addProduct(product));
-      });
-    });
+    //   // Dispatch each product individually
+    //   figure.forEach(product => {
+    //     dispatch(addProduct(product));
+    //   });
+    // });
 
 
     // fetch("https://warhammer-backend.vercel.app/wargame")
@@ -122,11 +123,11 @@ function Home() {
     //     dispatch(addProduct(paint));
     //   });
     // })
-  }, [newProduct])
+  // }, [newProduct])
     
   
   useEffect(() => {
-    if(search){
+    
       fetch(`${BACKEND}/figure/search/${search}`)
       .then((response) => response.json())
       .then(data => {
@@ -142,13 +143,28 @@ function Home() {
             }));
         
         setSearchResult(figure)
+        console.log("ici",searchResult)
       })
       .catch((error) => {
         console.error("Une erreur s'est produite lors de la récupération des données", error);
         // Afficher un message d'erreur dans la console
       });
-    }
+    
   }, [search]);
+
+
+  let result =  searchResult.map((item, index) => (
+    
+    <WargameContent
+      id={item.id}
+      key={index}
+      name={item.name}
+      img={item.img}
+      price={item.price}
+      description={item.description}
+      type={item.type}
+    />))
+
 
 
 
@@ -157,7 +173,7 @@ function Home() {
   
   
   const content = () =>{
-    if (!search) {
+    if (search=="") {
       
       if (Navigation==="wargame") {
         return <Wargame/>;
@@ -213,14 +229,16 @@ function Home() {
       </div> 
       }
     }else{
-      <div>
-        <h1>Vos Recherche</h1>
-        <div>{setSearchResult}</div>
-
+      return <div>
+      <h1>Vos Recherches</h1>
+      {result}
       </div>
-    };
-
+      ;
     }
+  };
+    
+
+    
   
 
   return (
@@ -245,9 +263,7 @@ function Home() {
                     <FaSearch className={styles.icon_search} />
                     <input type="text" name="search" className={styles.search_bar} onChange={(e)=>setSearch(e.target.value)} placeholder="Rechercher ici ..." />
                 </div>
-                <div>
-                  {searchResult}
-              </div>
+                
             </form>
             <div className={styles.language} >
                 <p>FR:</p>
