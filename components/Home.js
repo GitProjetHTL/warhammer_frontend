@@ -153,17 +153,21 @@ function Home() {
   }, [search]);
 
 
-  let result =  searchResult.map((item, index) => (
+  let result ="";
+
+  if(search !=="") {
+    result=searchResult.map((item, index) => (
+      <WargameContent
+        id={item.id}
+        key={index}
+        name={item.name}
+        img={item.img}
+        price={item.price}
+        description={item.description}
+        type={item.type}
+      />))
     
-    <WargameContent
-      id={item.id}
-      key={index}
-      name={item.name}
-      img={item.img}
-      price={item.price}
-      description={item.description}
-      type={item.type}
-    />))
+  } 
 
 
 
